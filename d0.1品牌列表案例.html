@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   
+   
+</head>
+<body>
+    <div id='app'>
+
+        <div>
+            <div>
+                <h3>添加品牌</h3>
+            </div>
+            <div class="from-inline panel-body">
+               <label>
+                   Id:
+                   <input type="text" v-model='id'>
+               </label>
+               <label>
+                    name:
+                    <input type="text"  v-model='name'>
+                </label>
+                <input type="button" value="添加" @click='add()'/>
+            
+            <lavel>
+                搜索名称关键字
+                <input type="text" class="from-control" v-model='keywreds'/>
+            </lavel>
+            
+            
+            </div>
+
+        </div>
+
+
+
+      <table class='table table-bordered table-hover table-atriped'>
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nmae</th>
+                <th>Ctime</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for='item in search(keywreds)' :key='item.id'>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.ctime }}</td>
+                <td><a @click.prevent='del(item.id)'>删除</a></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+        <script>
+        
+       
+        var vm= new Vue({
+            el:"#app",
+            data:{
+               id:'',
+               name:'',
+               keywreds:'',
+               list:[
+                   {id: 1, name:'奔驰',ctime:new Date()},
+                   {id: 2, name:'宝马',ctime:new Date()},
+               ]
+              
+            },
+            methods:{
+                add(){
+                    console.log(111)
+                     var car={id: this.id, name:this.name, ctime:new Date()}
+                     this.list.push(car)
+                     this.id=this.name=''
+                },
+                del(id){
+                    // this.list.some((item,i)=>{
+                       
+                    //     if(item.id==id){
+                    //         this.list.splice(i,1)
+                    //         return true;
+                    //     }
+                    // })
+
+
+                    var index=this.list.findIndex(item =>{
+                        if(item.id==id){
+                            return true;
+                        }
+                    })
+                    console.log(index)
+                    this.list.splice(index,1)
+                },
+
+                search(keywreds){
+                    var newlist=[]
+                    this.list.forEach(item => {
+                        
+                        if(item.name.indexOf(keywreds) !=-1){
+                            newlist.push(item)
+                        }
+                    })
+                    return newlist
+                },
+
+            }
+         })
+         
+        </script>
+</body>
+</html>

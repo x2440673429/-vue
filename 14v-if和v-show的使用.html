@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+   
+</head>
+<body>
+    <div id='app'>
+
+        <!-- <input type="button" value='toggle' @click='toggle'/> -->
+        <input type="button" value='toggle' @click='flag=!flag'/>
+        <h3 v-if='flag'>这是用v-if控制的元素</h3>
+        <h3 v-show='flag'>这是用v-show控制的元素</h3>
+    </div>
+        <script>
+        
+       
+        var vm= new Vue({
+            el:"#app",
+            data:{
+                flag:true,
+              
+            },
+            mothods:{
+                // toggle(){
+                //     this.flag=!this.flag;
+                // }
+            }
+         })
+         
+        </script>
+</body>
+</html>

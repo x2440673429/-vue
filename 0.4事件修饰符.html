@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+   <style>
+       .inner{
+           margin:  10px;
+           height: 150px;
+           background: darkcyan;
+       }
+       
+   </style>
+</head>
+<body>
+    <div id='app'>
+       <div class="inner" @click='div1Handler'>
+           <input type="button" value="戳他" @click.stop='btnHandler'/>
+       </div>
+
+       <!-- prevent 阻止默认行为的 -->
+       <a href="http://www.baidu.com" @click.prevent='linkclick'>有问题，先去百度</a>
+       <!-- 使用 .capyure 实现捕获触发事件的机制 -->
+       <div class="inner" @click.capture='div1Handler'> 
+            <input type="button" value="戳他" @click='btnHandler'>
+       </div>
+
+       <!-- 使用 .self 实现只有点击当前元素时候才会触发事件处理函数 -->
+       <div class="inner" @click.self='div1Handler'> 
+            <input type="button" value="戳他" @click='btnHandler'>
+       </div>
+       <!-- 使用 .once 只触发一次事件处理函数 -->
+       <a href="http://www.baidu.com" @click.prevent.once='linkclick'>有问题，先去百度</a>
+    </div>
+        <script>
+        
+        
+        var vm= new Vue({
+            el:"#app",
+           
+            data:{
+                msg:'欢迎学习Vue',
+                               
+            },
+            methods:{
+                div1Handler(){
+                    console.log('这是触发了inner div的点击事件')
+                },
+                btnHandler(){
+                    console.log('这是触发了btn 的点击事件')
+                },
+                linkclick(){
+                    console.log('这里触发了链接的点击事件')
+                },
+               
+            }
+        
+         })
+         
+        </script>
+</body>
+</html>

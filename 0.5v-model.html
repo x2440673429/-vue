@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+   
+</head>
+<body>
+    <div id='app'>
+       <h4>{{msg}}</h4>
+        <!-- v-model 可以实现表单元素和Model中数据的双向绑定 -->
+        <!-- 注意：v-model 只能运用在表单元素中 -->
+       <input type="text" v-model="msg" style="width:100%"/>
+    </div>
+        <script>
+        
+     
+        var vm= new Vue({
+            el:"#app",
+           
+            data:{
+                msg:'me爱敲代码',
+              
+            }
+        
+         })
+         
+        </script>
+</body>
+</html>

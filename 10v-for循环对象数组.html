@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+   
+</head>
+<body>
+    <div id='app'>
+        <p v-for='(itme,i) in list'>ID:{{ itme.id }}---名字：{{ itme.name}}---索引：{{i}}</p>
+    </div>
+        <script>
+        
+       
+        var vm= new Vue({
+            el:"#app",
+            data:{ 
+               list:[
+                   { id : 1, name:'zs1'},
+                   { id : 2, name:'zs2'},
+                   { id : 3, name:'zs3'},
+                   { id : 4, name:'zs4'},
+               ]
+              
+            },
+            mothods:{
+
+            }
+         })
+         
+        </script>
+</body>
+</html>

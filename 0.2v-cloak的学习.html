@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+   <style>
+       [v-cloak]{
+           display: none;
+       }
+   </style>
+</head>
+<body>
+   
+    <div id='app'>
+          <!-- 使用  v-cloak 能够解决 差值表达式闪烁的问题 -->
+        <p v-cloak>------{{msg}}++++</p>
+        <h4 v-text="msg">====</h4>
+            <!-- 默认 v-text 是没有闪烁问题的 -->
+            <!-- v-text 会覆盖元素中原本的内容，但是 插值表达式 指挥替换自己的这个站为古，不会把整个元素的内容清空 -->
+        <div>{{msg2}}</div>
+        <div v-text='msg2'></div>
+        <div v-html='msg2'>12312312332232216224123211321</div>
+        <!-- v-bind;是Vue中，提供的用于绑定属性的指令 -->
+         <!-- <input type="button" value="按钮" v-bind:title="mytitle+'123'"> -->
+        <!-- v-bind：指令可以被简写为 ：要绑定的属性 -->
+         <!-- Vue 中提供了 v-on：事件绑定机制 -->
+        <input type="button" value="按钮" :title="mytitle+'123'" @click='show'>
+    </div>
+        <script>
+        
+
+        var vm= new Vue({
+            el:"#app",
+        
+            data:{
+                msg:'欢迎学习Vue',
+                msg2:'<h1>哈哈，我是一个大大的H1</h1>',             
+               mytitle:'这是一个自己定义的title',
+            },
+            methods:{ // 这个 methods 属性中定义了dangqianVue十六所有可用的方法。
+                show:function(){
+                    alert('hello')
+                }
+
+            }
+         })
+         
+        </script>
+</body>
+</html>
+
+
