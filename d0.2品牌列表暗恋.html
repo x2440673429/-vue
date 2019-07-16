@@ -27,10 +27,10 @@
                 </label>
                 <input type="button" value="添加" @click='add()'/>
             
-            <lavel>
+            <label>
                 搜索名称关键字
                 <input type="text" class="from-control" v-model='keywreds' v-focus v-color="'blue'"/>
-            </lavel>
+            </label>
             
             
             </div>
@@ -53,7 +53,7 @@
             <tr v-for='item in search(keywreds)' :key='item.id'>
                 <td>{{ item.id }}</td>
                 <td>{{ item.name }}</td>
-                <td>{{ item.ctime | dateFormat('')  }}</td>
+                <td>{{ item.ctime | dateFormat  }}</td>
                 <td><a @click.prevent='del(item.id)'>删除</a></td>
             </tr>
         </tbody>
@@ -65,12 +65,13 @@
     </div>
         
        <div id="app2">
-        <p v-color="'pink'" v-fontweight="700" v-fontsize="'30px'"">{{ dt | dateFormat('')}}</p->
+        <p v-color="'pink'" v-fontweight="700" v-fontsize="'30px'">{{ dt | dateFormat}}</p>
        </div> 
         
         <script>
             //全局过滤器
         Vue.filter('dateFormat',function(dateStr,pattern=''){
+           
             var dt=new Date(dateStr)
 
             var y=dt.getFullYear()
@@ -183,11 +184,13 @@
             methods:{},
             filters:{
                 dateFormat:function(dateStr,pattern=''){
+        
                     var dt=new Date(dateStr)
 
                 var y=dt.getFullYear()
-                var m=dt.getMonth().tostring().padstart(2,0)
-                var d=dt.getDate().tostring().padstart(2,0)
+             
+                var m=dt.getMonth().toString().padStart(2,0)
+                var d=dt.getDate().toString().padStart(2,0)
 
 
                 if(pattern.toLowerCase()==='yyyy-mm-dd'){
@@ -204,7 +207,7 @@
             directives:{
                 'fontweight':{
                     bind:function(el,binding){
-                        el.style.fontWeight=binding.va;ue
+                        el.style.fontWeight=binding.value
                     }
                 },
                 'fontsize':function(el,binding){
